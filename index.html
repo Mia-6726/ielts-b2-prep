@@ -94,6 +94,53 @@
         <h1>IELTS B2 Preparation Hub</h1>
         <p>Your one-stop resource for achieving your IELTS B2 goal!</p>
     </header>
+<section id="home">
+  <h2>歡迎來到 IELTS B2 準備中心</h2>
+  <p>這裡是您達成 IELTS B2 目標的一站式資源中心！</p>
+  <a href="#resources">探索學習資源</a>
+</section>
+
+<section id="resources">
+  <h2>學習資源</h2>
+  <ul>
+    <li><a href="https://www.ielts.org" target="_blank">官方 IELTS 網站</a></li>
+    <li><a href="https://takeielts.britishcouncil.org" target="_blank">British Council IELTS 準備資源</a></li>
+    <li><a href="https://www.cambridgeenglish.org" target="_blank">Cambridge English 資源</a></li>
+    <li><a href="https://ieltsliz.com" target="_blank">IELTS Liz 免費課程與技巧</a></li>
+  </ul>
+</section>
+
+<section id="study-tips">
+  <h2>學習技巧</h2>
+  <ul>
+    <li><strong>聽力：</strong>收聽英語播客或新聞，提高理解力。</li>
+    <li><strong>閱讀：</strong>閱讀英語報章雜誌，擴充詞彙量。</li>
+    <li><strong>寫作：</strong>每日練習寫作，並尋求反饋。</li>
+    <li><strong>口說：</strong>與語伴練習對話，增強流利度。</li>
+    <li><strong>時間管理：</strong>模擬考試環境，熟悉時間限制。</li>
+  </ul>
+</section>
+
+<section id="practice-quiz">
+  <h2>練習測驗</h2>
+  <p>以下哪一項是 IELTS 測驗的主要目的？</p>
+  <form id="quiz-form">
+    <input type="radio" name="quiz" value="A"> 評估英語能力以供學術與移民用途<br>
+    <input type="radio" name="quiz" value="B"> 認證母語為英語者<br>
+    <input type="radio" name="quiz" value="C"> 教授英語文法<br>
+    <input type="radio" name="quiz" value="D"> 準備學生參加高中考試<br>
+    <button type="submit">提交答案</button>
+  </form>
+  <p id="quiz-result"></p>
+</section>
+
+<section id="progress-tracker">
+  <h2>進度追蹤器</h2>
+  <label for="study-hours">輸入今日學習時數：</label>
+  <input type="number" id="study-hours" min="0">
+  <button onclick="addHours()">新增</button>
+  <p>累計學習時數：<span id="total-hours">0</span> 小時</p>
+</section>
     <nav>
         <a href="#home">Home</a>
         <a href="#resources">Resources</a>
@@ -174,3 +221,27 @@
             const result = document.getElementById('quiz-result');
             if (selected === 0) {
                 result.textContent = 'Correct! The IELTS test assesses English proficiency for academic and immigration purposes
+                    <script>
+  document.getElementById('quiz-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const answer = document.querySelector('input[name="quiz"]:checked');
+    const result = document.getElementById('quiz-result');
+    if (answer) {
+      result.textContent = answer.value === 'A' ? '答對了！' : '答錯了，正確答案是 A。';
+    } else {
+      result.textContent = '請選擇一個答案。';
+    }
+  });
+
+  let totalHours = 0;
+  function addHours() {
+    const hours = parseInt(document.getElementById('study-hours').value);
+    if (!isNaN(hours) && hours > 0) {
+      totalHours += hours;
+      document.getElementById('total-hours').textContent = totalHours;
+      document.getElementById('study-hours').value = '';
+    } else {
+      alert('請輸入有效的學習時數。');
+    }
+  }
+</script>
